@@ -1,39 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clock</title>
-    <link href="style.css" rel="stylesheet">
-</head>
-
+   <head>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>
+    </head>
+	 
 <body>
-    <div class="container">
-        <div class="clock">
-            <div class="nums-right">
-                <div>12</div>
-                <div style="right: -115px;position: relative;top: -46px;">1</div>
-                <div style="right: -196px;position: relative;top: -41px;">2</div>
-                <div style="right: -233px;position: relative;">3</div>
-                <div style="right: -196px;position: relative;top: 41px;">4</div>
-                <div style="right: -115px;position: relative;top: 46px;">5</div>
-                <div>6</div>
-            </div>
-            <div class="nums-left">
-                <div style="top: 28px;position: relative;left: -115px;">11</div>
-                <div style="top: -5px;position: relative;left: -189px;">10</div>
-                <div style="position: relative;left: -233px;">9</div>
-                <div style="top: 3px;position: relative;left: -198px;">8</div>
-                <div style="top: -30px;position: relative;left: -115px;">7</div>
-            </div>
-            <div class="secs"></div>
-            <div class="mins"></div>
-            <div class="hours"></div>
-            <div class="circle"></div>
-        </div>
-    </div>
-    <script src="app.js"></script>
+ <pre><code class="language-mermaid">graph LR
+A--&gt;B
+</code></pre>
+
+<div class="mermaid">
+sequenceDiagram
+activate Administrator
+activate The System Software
+activate The System Database
+
+Administrator-&gt;&gt;The System Software: insert employee id
+The System Software-&gt;&gt;The System Database: verify employee id
+
+alt  employee id exists
+
+The System Database--&gt;&gt;The System Software: employee id exists
+The System Software--&gt;&gt;Administrator: delete employee
+
+else
+
+The System Database--&gt;&gt;The System Software: employee id doeasn't exist
+The System Software--&gt;&gt;Administrator: error message
+
+deactivate Administrator
+deactivate The System Software
+deactivate The System Database
+end
+</div>
+	
 </body>
+<script>
+var config = {
+    startOnLoad:true,
+    theme: 'forest',
+    flowchart:{
+            useMaxWidth:false,
+            htmlLabels:true
+        }
+};
+mermaid.initialize(config);
+window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+</script>
 
 </html>
